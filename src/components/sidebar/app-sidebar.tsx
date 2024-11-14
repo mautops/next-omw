@@ -2,28 +2,28 @@
 
 import * as React from "react";
 import {
-  AudioWaveform,
-  BookOpen,
+  ArrowUpDown,
+  Bell,
   Bot,
+  ChartColumnIncreasing,
+  Coffee,
   Command,
+  Cpu,
   Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
+  MessageCircleOff,
+  Siren,
 } from "lucide-react";
 
-import { NavMain } from "~/components/sidebar/nav-main";
-import { NavProjects } from "~/components/sidebar/nav-projects";
-import { NavUser } from "~/components/sidebar/nav-user";
+import { NavMain } from "@/components/sidebar/nav-main";
+import { NavProjects } from "@/components/sidebar/nav-projects";
+import { NavUser } from "@/components/sidebar/nav-user";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "~/components/ui/sidebar";
+} from "@/components/ui/sidebar";
 import { ThemeToggle } from "../utils/theme";
 import { NavHeader } from "./nav-header";
 
@@ -35,129 +35,62 @@ const data = {
     avatar: "/avatars/shadcn.jpg",
   },
   header: {
-    name: "Acme Inc",
-    plan: "Enterprise",
-    logo: GalleryVerticalEnd,
+    name: "Oh My Call",
+    plan: "Manage Your Alerts",
+    logo: Siren,
   },
-  teams: [
+  projects: [
     {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
+      name: "我的告警",
+      url: "/alerts/my",
+      icon: Frame,
     },
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Dashboard",
       url: "#",
-      icon: SquareTerminal,
+      icon: Command,
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "全局概览",
+          url: "/dashboard/overview",
+          icon: Coffee,
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "排行榜",
+          url: "/dashboard/ranking",
+          icon: ChartColumnIncreasing,
         },
         {
-          title: "Settings",
-          url: "#",
+          title: "核心指标",
+          url: "/dashboard/metrics",
+          icon: Cpu,
         },
       ],
     },
     {
-      title: "Models",
+      title: "RuleEngine",
       url: "#",
       icon: Bot,
       items: [
         {
-          title: "Genesis",
-          url: "#",
+          title: "沉默规则",
+          url: "/rules/mute",
+          icon: MessageCircleOff,
         },
         {
-          title: "Explorer",
-          url: "#",
+          title: "订阅规则",
+          url: "/rules/subscription",
+          icon: Bell,
         },
         {
-          title: "Quantum",
-          url: "#",
+          title: "收敛规则",
+          url: "/rules/convergence",
+          icon: ArrowUpDown,
         },
       ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
     },
   ],
 };
@@ -169,8 +102,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavHeader header={data.header} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
+        <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
         <ThemeToggle />

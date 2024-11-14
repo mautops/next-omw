@@ -1,13 +1,13 @@
 "use client";
 
-import { ChevronRight, Siren, type LucideIcon } from "lucide-react";
+import { ChevronRight, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "~/components/ui/collapsible";
+} from "@/components/ui/collapsible";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -17,7 +17,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "~/components/ui/sidebar";
+} from "@/components/ui/sidebar";
 
 export function NavMain({
   items,
@@ -30,27 +30,15 @@ export function NavMain({
     items?: {
       title: string;
       url: string;
+      icon?: LucideIcon;
     }[];
   }[];
 }) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Alerts</SidebarGroupLabel>
+      <SidebarGroupLabel>Settings</SidebarGroupLabel>
       <SidebarMenu>
-        <SidebarMenuItem>
-          <SidebarMenuButton
-            className={
-              selectedItem === "myalert"
-                ? "bg-primary text-primary-foreground"
-                : ""
-            }
-            onClick={() => setSelectedItem("myalert")}
-          >
-            <Siren className="mr-2" />
-            <span>我的告警</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
         {items.map((item) => (
           <Collapsible
             key={item.title}
@@ -80,6 +68,11 @@ export function NavMain({
                         onClick={() => setSelectedItem(subItem.title)}
                       >
                         <a href={subItem.url}>
+                          <div>
+                            {subItem.icon && (
+                              <subItem.icon className="size-4" />
+                            )}
+                          </div>
                           <span>{subItem.title}</span>
                         </a>
                       </SidebarMenuSubButton>

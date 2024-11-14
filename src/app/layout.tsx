@@ -1,12 +1,12 @@
-import "~/styles/globals.css";
+import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "~/components/ui/sidebar";
-import { AppSidebar } from "~/components/sidebar/app-sidebar";
+} from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/sidebar/app-sidebar";
 import { Separator } from "@radix-ui/react-separator";
 import { ThemeProvider } from "next-themes";
 import { SessionProvider } from "next-auth/react";
